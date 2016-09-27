@@ -1,18 +1,16 @@
 {
-  "name": "conFusion",
+  "name": "myrecipestore",
   "version": "1.0.0",
-  "description": "Website for an awesome restaurant",
+  "description": "My Recipe Store website",
   "main": "index.html",
   "moduleType": [],
   "keywords": [
-    "conFusion",
-    "Fusion",
-    "Restaurant"
+    "Recipes"
   ],
   "authors": [
-    "Jogesh Muppala"
+    "James Hooper"
   ],
-  "license": "MIT",
+  "license": "James Hooper",
   "homepage": "",
   "ignore": [
     "**/.*",
