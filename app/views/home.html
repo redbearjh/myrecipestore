@@ -1,30 +1,40 @@
 
     <div class="container">
-        <div class="row row-content">
-            <div class="col-xs-12 col-sm-3 col-sm-push-9">
-                <p style="padding:10px;"></p>
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+               </ul>
             </div>
-            <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-                <div ng-if="!showDish">
-                    <h3>{{message}}</h3>
-                </div>
-                <div class="media" ng-if="showDish">
-                    <div class="media-left media-middle">
-                        <a href="#">
-                        <img class="media-object img-thumbnail" 
-                        ng-src={{dish.image}} alt="Uthappizza">
+        </div>
+    
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h2>Recipes</h2>
+               <ul class="media-list">
+                <li class="media" ng-repeat="recipe in recipes">
+                    <div class="media-left media-middle ">
+                        <a>
+                        <img class="media-object img-thumbnail"
+                        ng-src={{recipe.image}} alt="Recipe">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{dish.name}} 
-                        <span class="label label-danger">{{dish.label}}</span> 
-                        <span class="badge">{{dish.price/100 | currency}}</span></h2>
-                        <p>{{dish.description}}</p>
+                        <h3 class="media-heading">{{recipe.name}}</h3>
+                        <p>{{recipe.description}}</p>
                     </div>
-                </div>
+                </li>
+            </ul>
+
             </div>
-        </div>
-
-
+             <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+            </div>
+       </div>
 
     </div>
+
+
+
+
+

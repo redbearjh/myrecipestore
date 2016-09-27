@@ -2,16 +2,17 @@
 
 angular.module('myrecipestoreApp')
 .constant("baseURL", "https://localhost:3443/")
+
+
 .factory('recipeFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
-        return $resource(baseURL + "dishes/:id", null, {
+    return $resource(baseURL + "recipes/:id", null, {
             'update': {
                 method: 'PUT'
             }
         });
 
 }])
-
 
 
 .factory('$localStorage', ['$window', function ($window) {

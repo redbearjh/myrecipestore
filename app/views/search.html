@@ -1,0 +1,38 @@
+    <div class="ngdialog-message">
+        <div class="">
+            <h3>Search using any or all of the following </h3>
+        </div>
+        <div class="">&nbsp;</div>
+        <div class="">
+            <form ng-submit="doSearch()">
+                <div class="form-group">
+                    <label class="sr-only" for="Ingredient">Ingredient</label>
+                    <input type="text" class="form-control input-sm" id="Ingredient" placeholder="Ingredient" ng-model="search.ingredient">
+                </div>
+                <div class="form-group" ng-controller="OccasionCtrl">
+                    <label for="Occasion">Occasion</label>
+                    <select ng-model="search.occasion" 
+                    ng-options="item as item.name for item in items"></select>
+                    {{selectedItem | json}}
+                </div>
+                <div class="form-group" ng-controller="CuisineCtrl">
+                    <label for="Cuisine">Cuisine</label>
+                    <select ng-model="search.cuisine" 
+                    ng-options="item as item.name for item in items"></select>
+                    {{selectedItem | json}}
+                </div>
+                <div class="form-group" ng-controller="CourseCtrl">
+                    <label for="Course">Course</label>
+                    <select ng-model="search.course" 
+                    ng-options="item as item.name for item in items"></select>
+                    {{selectedItem | json}}
+                </div>                        
+
+                <button type="submit" class="btn btn-success btn-md">Go!</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click=closeThisDialog("Cancel")>Cancel</button> &nbsp; &nbsp;
+            </form>
+        </div>
+        <div>
+
+        </div>
+    </div>
