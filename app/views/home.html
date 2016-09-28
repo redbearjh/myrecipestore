@@ -14,7 +14,7 @@
                <ul class="media-list">
                 <li class="media" ng-repeat="recipe in recipes">
                     <div class="media-left media-middle ">
-                        <a>
+                        <a ui-sref="app.recipedetails({id: recipe._id})">
                         <img class="media-object img-thumbnail"
                         ng-src={{recipe.image}} alt="Recipe">
                         </a>

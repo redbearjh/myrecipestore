@@ -85,6 +85,27 @@ angular.module('myrecipestoreApp')
     
 }])
 
+.controller('RecipeDetailController', ['$scope', '$state', '$stateParams', 'recipeFactory', function ($scope, $state, $stateParams, recipeFactory) {
+
+    $scope.recipe = {};
+    $scope.showRecipe = false;
+    $scope.message = "Loading ...";
+
+    $scope.recipe = recipeFactory.get({
+            id: $stateParams.id
+        })
+        .$promise.then(
+            function (response) {
+                $scope.recipe = response;
+                $scope.showRecipe = true;
+            },
+            function (response) {
+                $scope.message = "Error: " + response.status + " " + response.statusText;
+            }
+        );
+
+}])
+
 .controller('LoginController', ['$scope', 'ngDialog', '$localStorage', 'AuthFactory', function ($scope, ngDialog, $localStorage, AuthFactory) {
     
     $scope.loginData = $localStorage.getObject('userinfo','{}');

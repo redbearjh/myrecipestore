@@ -34,7 +34,17 @@ angular.module('myrecipestoreApp', ['ui.router','ngResource','ngDialog'])
                 }
             })
         
-
+            // route for the reipedetail page
+            .state('app.recipedetails', {
+                url: 'recipe/:id',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/recipedetail.html',
+                        controller  : 'RecipeDetailController'
+                   }
+                }
+            })
+        
     
         $urlRouterProvider.otherwise('/');
     })
