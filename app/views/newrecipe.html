@@ -1,0 +1,46 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Recipe Detail</li>
+               </ul>
+            </div>
+        </div>
+    
+        <div class="row row-content">
+            <div class="col-xs-12" ng-if="!showRecipe">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showRecipe">
+                <button class="btn btn-md btn-danger"
+                    type="button" ui-sref="app">
+                    Back to Recipes
+                </button> 
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                        <img class="media-object img-thumbnail" 
+                        ng-src={{recipe.image}} alt="logo.jpg">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{recipe.name}} </h2>
+                        <p>{{recipe.how_method}}</p>
+                    </div>
+                    <li ng-repeat="ingredient in recipe.ingredients">
+                    <div class="media-body">
+                        <p>{{ingredient.ingredientdetails}}</p>
+                    </div>
+                </li>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+

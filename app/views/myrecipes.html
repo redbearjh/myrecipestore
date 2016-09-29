@@ -4,22 +4,32 @@
             <div class="col-xs-12">
                <ul class="breadcrumb">
                    <li><a href="index.html">Home</a></li>
+                   <li class="active">My Recipes</li>
                </ul>
             </div>
         </div>
     
         <div class="row row-content">
+
+            <div class="col-xs-12 col-sm-9">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <p class="navbar-btn">
-                            <a ng-click="openSearch()" class="btn btn-default">Search for Recipes!</a>
-                        </p>
+                    <a ng-click="addRecipe()">
+                    <span class="glyphicon glyphicon-plus"></span> Add recipe</a>
                     </li>
                 </ul>
-            <div class="col-xs-12 col-sm-9">
                 <h2>Recipes</h2>
                <ul class="media-list">
-                <li class="media" ng-repeat="recipe in recipes">
+                <li class="media" ng-repeat="recipe in recipes" style="border:1px solid black">
+                    
+                <ul class="nav navbar-nav">
+                    <li>
+                        <span class="glyphicon glyphicon-trash"
+                         aria-hidden="true"></span>Delete</li> <br>
+                    <li>
+                        <span class="glyphicon glyphicon-edit"
+                         aria-hidden="true"></span>Edit</li>
+                </ul>
                     <div class="media-left media-middle ">
                         <a ui-sref="app.recipedetails({id: recipe._id})">
                         <img class="media-object img-thumbnail"
@@ -40,6 +50,8 @@
        </div>
 
     </div>
+
+
 
 
 

@@ -21,19 +21,18 @@ angular.module('myrecipestoreApp')
             $scope.message = "Error: " + response.status + " " + response.statusText;
         });
 
-
-    $scope.isSelected = function (checkTab) {
-        return ($scope.tab === checkTab);
-    };  
     
 
 }])
 
 // implement the IndexController and About Controller here
 
-.controller('HomeController', ['$scope', 'recipeFactory', function ($scope, recipeFactory) {
+.controller('HomeController', ['$scope', 'ngDialog', 'recipeFactory', function ($scope, ngDialog, recipeFactory) {
         
-
+    $scope.openSearch = function () {
+        ngDialog.open({ template: 'views/search.html', scope: $scope, className: 'ngdialog-theme-default', controller:"SearchController" });
+    }; 
+    
     recipeFactory.query(
         function (response) {
             $scope.recipes = response;
@@ -57,11 +56,7 @@ angular.module('myrecipestoreApp')
         
     $scope.openLogin = function () {
         ngDialog.open({ template: 'views/login.html', scope: $scope, className: 'ngdialog-theme-default', controller:"LoginController" });
-    };
-    
-    $scope.openSearch = function () {
-        ngDialog.open({ template: 'views/search.html', scope: $scope, className: 'ngdialog-theme-default', controller:"SearchController" });
-    };    
+    };   
     
     $scope.logOut = function() {
        AuthFactory.logout();
@@ -103,6 +98,7 @@ angular.module('myrecipestoreApp')
                 $scope.message = "Error: " + response.status + " " + response.statusText;
             }
         );
+
 
 }])
 
