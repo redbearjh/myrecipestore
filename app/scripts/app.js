@@ -43,9 +43,7 @@ angular.module('myrecipestoreApp', ['ui.router','ngResource','ngDialog'])
                         controller  : 'RecipeDetailController'
                    }
                 }
-            })
-        
-    
+            });
         $urlRouterProvider.otherwise('/');
     })
 ;

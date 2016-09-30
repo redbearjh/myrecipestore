@@ -14,8 +14,8 @@
                     <li ng-class="{active: stateis('app')}"><a ui-sref="app">
                         <span class="glyphicon glyphicon-home"
                          aria-hidden="true"></span> Home</a></li>
-                    <li ng-class="{active: stateis('app.myrecipes')}"><a ui-sref="app.myrecipes">
-                    <!--<li ng-if="loggedIn" ng-class="{active: stateis('app.myrecipes')}"><a ui-sref="app.myrecipes"> -->
+                    <!--<li ng-class="{active: stateis('app.myrecipes')}"><a ui-sref="app.myrecipes">-->
+                    <li ng-if="loggedIn" ng-class="{active: stateis('app.myrecipes')}"><a ui-sref="app.myrecipes"> 
                         <span class="glyphicon glyphicon-info-sign"
                          aria-hidden="true"></span> My Recipes</a></li>
                 </ul>

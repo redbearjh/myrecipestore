@@ -78,7 +78,7 @@ angular.module('myrecipestoreApp')
         $resource(baseURL + "users/login")
         .save(loginData,
            function(response) {
-              storeUserCredentials({username:loginData.username, token: response.token});
+              storeUserCredentials({username:loginData.username});//, token: response.token});
               $rootScope.$broadcast('login:Successful');
            },
            function(response){
@@ -146,5 +146,15 @@ angular.module('myrecipestoreApp')
     
     return authFac;
     
+}])
+
+.factory('newrecipeFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+
+        return $resource(baseURL + "dishes/:id", {id:"@Id"}, {
+            'update': {
+                method: 'PUT'
+            }
+        });
+
 }])
 ;

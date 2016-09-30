@@ -2,19 +2,14 @@
 
 angular.module('myrecipestoreApp')
 
-.controller('MyRecipesController', ['$scope', 'recipeFactory', function ($scope, recipeFactory) {
+.controller('MyRecipesController', ['$scope', '$state', 'recipeFactory', 'ngDialog', '$window', function ($scope, $state, recipeFactory, ngDialog, $window) {
 
-    $scope.tab = 1;
     $scope.filtText = '';
-    $scope.showDetails = false;
-    $scope.showFavorites = false;
-    $scope.showMenu = false;
     $scope.message = "Loading ...";
 
     recipeFactory.query(
         function (response) {
             $scope.recipes = response;
-            $scope.showMenu = true;
 
         },
         function (response) {
@@ -22,6 +17,25 @@ angular.module('myrecipestoreApp')
         });
 
     
+    
+    
+   $scope.deleteRecipe = function(recipeid) {
+    var deleteConfirm = $window.confirm('Are you sure you want to delete?');
+    if(deleteConfirm)
+        {
+            console.log('Delete recipe', recipeid);
+            recipeFactory.delete({id: recipeid});
+            //$location.url('/myrecipes');
+            $window.location.reload();
+        }
+    }; 
+    
+    
+    
+    
+    $scope.addRecipe = function () {
+        ngDialog.open({ template: 'views/newrecipe.html', scope: $scope, className: 'ngdialog-theme-default', controller:"newRecipeController" });
+    };       
 
 }])
 
@@ -122,11 +136,22 @@ angular.module('myrecipestoreApp')
     
 }])
 
-.controller('SearchController', ['$scope', 'ngDialog', function ($scope, ngDialog) {
-    
 
-    
-}])
+
+.controller('newRecipeController', ['$scope', 'ngDialog',  function ($scope, ngDialog) {
+
+    $scope.donewrecipe = function () {
+
+        recipeFactory.save($scope.newrecipe);
+
+        $state.go($state.current, {}, {reload: true});
+        
+        $scope.newrecipeForm.$setPristine();
+    }
+}])    
+
+
+
 
 .controller('OccasionCtrl', function($scope) {
     $scope.items = [
